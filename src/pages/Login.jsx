@@ -30,6 +30,7 @@ export default function Login() {
   }
 
   async function initUser(token) {
+    localStorage.setItem("token", token);
     try {
       let res = await api.get("/users/details");
       setUser({
