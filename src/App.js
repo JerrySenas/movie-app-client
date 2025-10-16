@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom'
+import { Container } from 'react-bootstrap'
+import { Routes, Route } from 'react-router-dom';
+
+import Register from './pages/Register';
+import Login from './pages/Login';
+import { UserProvider } from './userContext';
+import Movies from './pages/Movies';
+import AddMovie from './pages/AddMovie';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserProvider>
+      <Router>
+        <Container>
+          <Routes>
+            <Route path='/register' element={<Register />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/movies' element={<Movies />} />
+            <Route path='/addMovie' element={<AddMovie />} />
+          </Routes>
+        </Container>
+      </Router>
+    </UserProvider>
   );
 }
 
